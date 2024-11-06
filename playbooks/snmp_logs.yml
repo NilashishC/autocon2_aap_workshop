@@ -28,6 +28,6 @@
   gather_facts: false
   tasks:
    - name: Upload persistent logs
-     ansible.posix.synchronize:
+     ansible.builtin.copy:
        src: /tmp/ansible.log
        dest: ansible.log
