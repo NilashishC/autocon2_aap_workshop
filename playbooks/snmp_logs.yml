@@ -9,6 +9,7 @@
     - name: Configure SNMP community and host
       arista.eos.eos_command:
         commands: show version
+    - ansible.builtin.command: cat /tmp/ansible.log
 
 - name: Push persistent logs
   hosts: log-server
