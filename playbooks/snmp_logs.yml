@@ -1,27 +1,14 @@
 ---
 - name: Configure SNMP community and host on a Cisco IOS router
-  hosts: cisco
+  hosts: arista
   gather_facts: false
   vars:
     ansible_persistent_log_messages: true
     ansible_log_path: /tmp/ansible.log
   tasks:
     - name: Configure SNMP community and host
-      cisco.ios.ios_snmp_server:
-        config:
-          communities:
-            - acl_v4: acl_uq
-              name: autocon2-community
-              rw: true
-            - acl_v4: acl_uq
-              name: ansible-community
-              rw: true
-          hosts:
-            - host: 192.0.2.104
-              traps: bgp
-              version: 2c
-              community_string: autocon2-community
-        state: merged
+      arista.eos.eos_command:
+        commands: show version
 
 - name: Push persistent logs
   hosts: log-server
