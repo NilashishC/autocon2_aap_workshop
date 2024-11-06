@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
     ansible_persistent_log_messages: true
-    ansible_log_path: /tmp/ansible.log
+    ansible_log_path: ~/ansible.log
   tasks:
     - name: Configure SNMP community and host
       arista.eos.eos_command:
@@ -17,5 +17,5 @@
   tasks:
    - name: Upload persistent logs
      ansible.builtin.copy:
-       src: /tmp/ansible.log
+       src: ~/ansible.log
        dest: ansible.log
